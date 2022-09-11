@@ -1,11 +1,10 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-/* eslint-disable*/
-const withRouter = (WrappedComponent) => (props) => {
-  const params = useParams();
-
-  return <WrappedComponent {...props} params={params} />;
-};
+const withRouter = (WrappedComponent) =>
+  function Wrapper(props) {
+    const params = useParams();
+    return <WrappedComponent {...props} params={params} />;
+  };
 
 export default withRouter;

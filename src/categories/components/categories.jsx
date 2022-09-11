@@ -15,16 +15,21 @@ export default class Categories extends React.PureComponent {
 
   render() {
     const { categories, status } = this.props;
-    return (
-      <div>
-        <h1>{status}</h1>
-        {categories.map((i) => (
-          <Link key={i} to={`category/${i}`}>
-            {i}
-          </Link>
-        ))}
-      </div>
-    );
+    if (status === Status.PENDING) {
+      return <div>Loading...</div>;
+    }
+    if (status === Status.SUCCESS) {
+      return (
+        <div>
+          <h1>{status}</h1>
+          {categories.map((i) => (
+            <Link key={i} to={`category/${i}`}>
+              {i}
+            </Link>
+          ))}
+        </div>
+      );
+    }
   }
 }
 
