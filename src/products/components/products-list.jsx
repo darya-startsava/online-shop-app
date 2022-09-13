@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Status from '../../utils/status';
+import ProductsListItem from '../containers/product-list-item';
 
 class ProductsList extends React.PureComponent {
   async componentDidMount(prevProps) {
@@ -19,7 +20,6 @@ class ProductsList extends React.PureComponent {
 
   render() {
     const { products, status } = this.props;
-    console.log(products[0]?.prices.filter((item) => item?.currency?.symbol === '$')[0]);
     if (status === Status.PENDING) {
       return <div>Loading...</div>;
     }
@@ -30,12 +30,7 @@ class ProductsList extends React.PureComponent {
             Products:
             {products.map((i) => {
               const price = i?.prices?.filter((item) => item?.currency?.symbol === '$')[0];
-              return (
-                <div key={i.id}>
-                  <div>{i.brand + ' ' + i.name}</div>
-                  <div>{price?.currency?.symbol + price?.amount}</div>
-                </div>
-              );
+              return <ProductsListItem key={i.id} product={i} price={price} />;
             })}
           </div>
         </>

@@ -42,3 +42,33 @@ export async function queryProductsByCategory(category) {
 
   return await client.post(query);
 }
+
+export async function queryProductById(id) {
+  const query = new Query('product', true)
+    .addArgument('id', 'String!', id)
+    .addField('id', true)
+    .addField('name', true)
+    .addField('inStock', true)
+    .addField('gallery', true)
+    .addField('description', true)
+    .addField('category', true)
+    .addField('brand', true)
+    .addField(
+      new Field('prices', true).addFieldList([
+        'amount',
+        new Field('currency', true).addFieldList(['label', 'symbol']),
+      ])
+    )
+    .addField(
+      new Field('attributes', true).addFieldList(
+        [
+          'id',
+          'name',
+          'type',
+          new Field('items', true).addFieldList(['displayValue', 'value', 'id']),
+        ],
+        true
+      )
+    );
+  return await client.post(query);
+}
