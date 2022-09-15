@@ -4,12 +4,7 @@ import Status from '../../utils/status';
 import { Link } from 'react-router-dom';
 
 export default class Categories extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.componentDidMount = this.componentDidMount.bind(this);
-  }
-
-  async componentDidMount() {
+  componentDidMount() {
     this.props.fetchCategories();
   }
 

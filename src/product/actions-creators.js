@@ -11,6 +11,7 @@ export const fetchProduct = (id) => async (dispatch) => {
       type: FETCH_PRODUCT_SUCCESS,
       product: { [product.id]: product },
     });
+    return product;
   } catch {
     dispatch({ type: FETCH_PRODUCT_ERROR });
   }

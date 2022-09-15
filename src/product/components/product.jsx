@@ -3,30 +3,50 @@ import PropTypes from 'prop-types';
 import Status from '../../utils/status';
 import './product.css';
 import Button from '../../button/button';
+import { productPropTypes } from '../../utils/propTypes';
 
 export default class Product extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = { imageUrl: '' };
+    this.state = { imageUrl: '', selectedAttributes: [] };
     this.handleClick = this.handleClick.bind(this);
     this.handleImageClick = this.handleImageClick.bind(this);
   }
   async componentDidMount() {
     const { params, product, fetchProduct } = this.props;
     if (!product) {
-      fetchProduct(params.product);
+      const product = await fetchProduct(params.product);
+      const selectedAttributes = {};
+      product.attributes.forEach((i) => {
+        selectedAttributes[i.id] = i.items[0].id;
+      });
+      this.setState({ imageUrl: product?.gallery[0], selectedAttributes });
+    } else {
+      const selectedAttributes = {};
+      product.attributes.forEach((i) => {
+        selectedAttributes[i.id] = i.items[0].id;
+      });
+      this.setState({ imageUrl: product?.gallery[0], selectedAttributes });
     }
-    this.setState({ imageUrl: product.gallery[0] });
   }
-
   handleClick() {
-    console.log('CLICK!');
+    const { addProductToCart, product } = this.props;
+    addProductToCart({
+      id: product.id,
+      product,
+      selectedAttributes: this.state.selectedAttributes,
+    });
   }
 
   handleImageClick(url) {
     this.setState({ imageUrl: url });
   }
 
+  handleAttributeClick(attribute, value) {
+    this.setState((state) => {
+      return { selectedAttributes: { ...state.selectedAttributes, [attribute]: value } };
+    });
+  }
   render() {
     const { product, status } = this.props;
 
@@ -35,7 +55,6 @@ export default class Product extends React.PureComponent {
     }
 
     if (status === Status.SUCCESS) {
-      console.log('product properties', product);
       const currentCurrency = 'USD';
       const price = product.prices.filter((i) => i.currency.label === currentCurrency)[0];
       return (
@@ -62,7 +81,18 @@ export default class Product extends React.PureComponent {
                 <div key={i.id}>
                   <div>{i.name}:</div>
                   <div className="product-attribute-items">
-                    {i.items && i.items.map((item) => <div key={item.id}>{item.displayValue}</div>)}
+                    {i.items &&
+                      i.items.map((item) => (
+                        <button
+                          className={
+                            item.id === this.state.selectedAttributes[i.id] ? 'selected' : ''
+                          }
+                          key={item.id}
+                          onClick={() => this.handleAttributeClick(i.id, item.id)}
+                        >
+                          {item.displayValue}
+                        </button>
+                      ))}
                   </div>
                 </div>
               ))}
@@ -77,36 +107,9 @@ export default class Product extends React.PureComponent {
   }
 }
 Product.propTypes = {
-  product: PropTypes.shape({
-    attributes: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string,
-        name: PropTypes.string,
-        type: PropTypes.string,
-        items: PropTypes.arrayOf(
-          PropTypes.shape({
-            displayValue: PropTypes.string,
-            value: PropTypes.string,
-            id: PropTypes.string,
-          })
-        ),
-      })
-    ),
-    brand: PropTypes.string,
-    category: PropTypes.string,
-    description: PropTypes.string,
-    id: PropTypes.string,
-    inStock: PropTypes.bool,
-    gallery: PropTypes.array,
-    name: PropTypes.string,
-    prices: PropTypes.arrayOf(
-      PropTypes.shape({
-        amount: PropTypes.number,
-        currency: PropTypes.shape({ label: PropTypes.string, symbol: PropTypes.string }),
-      })
-    ),
-  }),
+  product: PropTypes.shape(productPropTypes),
   status: PropTypes.string,
   params: PropTypes.shape({ product: PropTypes.string }),
   fetchProduct: PropTypes.func,
+  addProductToCart: PropTypes.func,
 };

@@ -1,5 +1,3 @@
-.header-links-list {
+.header-wrapper {
   display: flex;
-  column-gap: 20px;
-  text-transform: uppercase;
 }

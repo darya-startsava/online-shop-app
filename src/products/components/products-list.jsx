@@ -4,14 +4,14 @@ import Status from '../../utils/status';
 import ProductsListItem from '../containers/product-list-item';
 
 class ProductsList extends React.PureComponent {
-  async componentDidMount(prevProps) {
+  componentDidMount(prevProps) {
     const { category, fetchProducts } = this.props;
     if (category) {
       fetchProducts(category);
     }
   }
 
-  async componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps) {
     const { category, fetchProducts } = this.props;
     if (category && category !== prevProps.category) {
       fetchProducts(category);
