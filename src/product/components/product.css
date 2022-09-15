@@ -1,0 +1,25 @@
+.product-info-wrapper {
+  display: flex;
+}
+
+.product-attribute-items {
+  display: flex;
+  column-gap: 20px;
+}
+
+.product-image-preview-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.product-image-preview {
+  height: auto;
+  width: 80px;
+}
+
+.product-image {
+  width: 610px;
+  height: 511px;
+  object-fit: cover;
+}

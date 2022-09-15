@@ -21,7 +21,6 @@ export default class Categories extends React.PureComponent {
     if (status === Status.SUCCESS) {
       return (
         <div>
-          <h1>{status}</h1>
           {categories.map((i) => (
             <Link key={i} to={`category/${i}`}>
               {i}

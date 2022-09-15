@@ -18,7 +18,7 @@ export default function reducer(state = { data: {}, status: Status.INIT }, actio
       return { data: {}, status: Status.PENDING };
     }
     case FETCH_PRODUCT_SUCCESS: {
-      return { data: { ...state.data, ...action.product }, status: Status.SUCCESS };
+      return { data: action.product, status: Status.SUCCESS };
     }
     case FETCH_PRODUCT_ERROR: {
       return { data: {}, status: Status.ERROR };
