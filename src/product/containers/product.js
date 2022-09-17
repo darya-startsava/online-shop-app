@@ -10,7 +10,8 @@ const mapStateToProps = (state, { params }) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
   fetchProduct: (id) => dispatch(fetchProduct(id)),
-  addProductToCart: (product) => dispatch({ type: ADD_PRODUCT_TO_CART, product: product }),
+  addProductToCart: (id, product, selectedAttributes, cartId) =>
+    dispatch({ type: ADD_PRODUCT_TO_CART, id, product, selectedAttributes, cartId }),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Product));

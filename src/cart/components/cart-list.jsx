@@ -9,7 +9,7 @@ export default class CartList extends React.PureComponent {
     return (
       <>
         {products.map((i) => (
-          <CartListItem key={i.id} product={i} />
+          <CartListItem key={i.cartId} {...i} />
         ))}
       </>
     );
@@ -19,11 +19,11 @@ export default class CartList extends React.PureComponent {
 CartList.propTypes = {
   products: PropTypes.arrayOf(
     PropTypes.shape({
-      products: PropTypes.arrayOf({
-        id: PropTypes.string,
-        product: PropTypes.shape(productPropTypes),
-        count: PropTypes.number,
-      }),
+      id: PropTypes.string,
+      product: PropTypes.shape(productPropTypes),
+      count: PropTypes.number,
+      selectedAttributes: PropTypes.object,
+      cartId: PropTypes.string,
     })
   ),
 };

@@ -18,11 +18,11 @@ export default class Cart extends React.PureComponent {
 Cart.propTypes = {
   products: PropTypes.arrayOf(
     PropTypes.shape({
-      products: PropTypes.arrayOf({
-        id: PropTypes.string,
-        product: PropTypes.shape(productPropTypes),
-        count: PropTypes.number,
-      }),
+      id: PropTypes.string,
+      product: PropTypes.shape(productPropTypes),
+      count: PropTypes.number,
+      selectedAttributes: PropTypes.object,
+      cartId: PropTypes.string,
     })
   ),
 };

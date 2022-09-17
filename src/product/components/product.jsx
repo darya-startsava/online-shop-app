@@ -31,11 +31,9 @@ export default class Product extends React.PureComponent {
   }
   handleClick() {
     const { addProductToCart, product } = this.props;
-    addProductToCart({
-      id: product.id,
-      product,
-      selectedAttributes: this.state.selectedAttributes,
-    });
+    const selectedAttributes = this.state.selectedAttributes;
+    const cartId = product.id + JSON.stringify(this.state.selectedAttributes);
+    addProductToCart(product.id, product, selectedAttributes, cartId);
   }
 
   handleImageClick(url) {
