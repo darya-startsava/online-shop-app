@@ -6,7 +6,7 @@ import Header from './header/header';
 class App extends React.PureComponent {
   render() {
     return (
-      <div className="App">
+      <div className="app">
         <Header />
         <Router />
       </div>

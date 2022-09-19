@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Status from '../../utils/status';
 import './product.css';
-import Button from '../../button/button';
+import Button from '../../reusableComponents/button';
 import { productPropTypes } from '../../utils/propTypes';
 
 export default class Product extends React.PureComponent {
@@ -96,7 +96,7 @@ export default class Product extends React.PureComponent {
               ))}
             <div>Price:</div>
             <div>{price.currency.symbol + price.amount}</div>
-            <Button name={'add to cart'} onClick={this.handleClick} />
+            <Button onClick={this.handleClick}>add to cart</Button>
             <div dangerouslySetInnerHTML={{ __html: product.description }} />
           </div>
         </div>
