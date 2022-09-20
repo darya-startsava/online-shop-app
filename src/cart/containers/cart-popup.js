@@ -4,6 +4,7 @@ import CartPopup from '../components/cart-popup';
 
 const mapStateToProps = (state) => ({
   products: state.cart,
+  currentCurrency: state.currency.currentValue,
 });
 
 export default withNavigate(connect(mapStateToProps)(CartPopup));

@@ -37,9 +37,8 @@ export default class CartListItem extends React.PureComponent {
   }
 
   render() {
-    const { product, cartId, count, selectedAttributes } = this.props;
-    const currentCurrency = 'USD';
-    const price = product.prices.filter((i) => i.currency.label === currentCurrency)[0];
+    const { product, cartId, count, selectedAttributes, currentCurrency } = this.props;
+    const price = product.prices.filter((i) => i.currency.label === currentCurrency.label)[0];
     return (
       <div className="cart-list-item-wrapper">
         <div>
@@ -81,4 +80,5 @@ CartListItem.propTypes = {
   count: PropTypes.number,
   selectedAttributes: PropTypes.object,
   cartId: PropTypes.string,
+  currentCurrency: PropTypes.shape({ label: PropTypes.string, symbol: PropTypes.string }),
 };

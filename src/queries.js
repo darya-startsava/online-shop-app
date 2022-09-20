@@ -72,3 +72,8 @@ export async function queryProductById(id) {
     );
   return await client.post(query);
 }
+
+export async function queryCurrencies() {
+  const query = new Query('currencies', true).addFieldList(['label', 'symbol']);
+  return await client.post(query);
+}

@@ -13,9 +13,10 @@ export default class Product extends React.PureComponent {
     this.handleImageClick = this.handleImageClick.bind(this);
   }
   async componentDidMount() {
-    const { params, product, fetchProduct } = this.props;
+    const { params, product, fetchProduct, fetchCurrencies } = this.props;
     if (!product) {
       const product = await fetchProduct(params.product);
+      fetchCurrencies();
       const selectedAttributes = {};
       product.attributes.forEach((i) => {
         selectedAttributes[i.id] = i.items[0].id;
@@ -46,15 +47,15 @@ export default class Product extends React.PureComponent {
     });
   }
   render() {
-    const { product, status } = this.props;
+    const { product, status, currentCurrency } = this.props;
+    console.log(this.props);
 
     if (status === Status.PENDING || status === Status.INIT) {
       return <div>Loading...</div>;
     }
 
     if (status === Status.SUCCESS) {
-      const currentCurrency = 'USD';
-      const price = product.prices.filter((i) => i.currency.label === currentCurrency)[0];
+      const price = product.prices.filter((i) => i.currency.label === currentCurrency?.label)[0];
       return (
         <div className="product-info-wrapper">
           <div className="product-image-preview-list">
@@ -95,7 +96,7 @@ export default class Product extends React.PureComponent {
                 </div>
               ))}
             <div>Price:</div>
-            <div>{price.currency.symbol + price.amount}</div>
+            <div>{price?.currency?.symbol + price?.amount}</div>
             <Button onClick={this.handleClick}>add to cart</Button>
             <div dangerouslySetInnerHTML={{ __html: product.description }} />
           </div>
@@ -108,6 +109,8 @@ Product.propTypes = {
   product: PropTypes.shape(productPropTypes),
   status: PropTypes.string,
   params: PropTypes.shape({ product: PropTypes.string }),
+  currentCurrency: PropTypes.shape({ label: PropTypes.string, symbol: PropTypes.string }),
   fetchProduct: PropTypes.func,
+  fetchCurrencies: PropTypes.func,
   addProductToCart: PropTypes.func,
 };

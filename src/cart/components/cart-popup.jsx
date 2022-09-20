@@ -10,7 +10,7 @@ export default class CartPopup extends React.PureComponent {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
-    this.handleHidePopup = this.handleHidePopup.bind(this);
+    this.handleHideCartPopup = this.handleHideCartPopup.bind(this);
   }
 
   handleClick() {
@@ -19,24 +19,24 @@ export default class CartPopup extends React.PureComponent {
     hidePopup();
   }
 
-  handleHidePopup() {
+  handleHideCartPopup() {
     const { hidePopup } = this.props;
     hidePopup();
   }
 
   render() {
-    const currentCurrency = { label: 'USD', symbol: '$' };
-    const { products, showPopup } = this.props;
+    const { currentCurrency } = this.props;
+    const { products, showCartPopup } = this.props;
     const result = calculatePriceAndQuantity(products, currentCurrency);
     let cartPopup = 'cart-popup';
-    if (showPopup) cartPopup += ' cart-popup-show';
+    if (showCartPopup) cartPopup += ' cart-popup-show';
     return (
       <div className={cartPopup}>
         <div>My bag: {result.quantity} items</div>
         <CartList products={products} />
         <div>Total {currentCurrency.symbol + Math.round(result.totalPrice * 100) / 100}</div>
         <Button onClick={this.handleClick}>view bag</Button>
-        <Button onClick={this.handleHidePopup}>check out</Button>
+        <Button onClick={this.handleHideCartPopup}>check out</Button>
       </div>
     );
   }
@@ -52,7 +52,8 @@ CartPopup.propTypes = {
       cartId: PropTypes.string,
     })
   ),
-  showPopup: PropTypes.bool,
+  showCartPopup: PropTypes.bool,
+  currentCurrency: PropTypes.shape({ label: PropTypes.string, symbol: PropTypes.string }),
   navigate: PropTypes.func,
   hidePopup: PropTypes.func,
 };

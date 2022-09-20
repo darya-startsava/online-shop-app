@@ -1,9 +1,8 @@
 import { connect } from 'react-redux';
-import Cart from '../components/cart';
+import CartListItem from '../components/cart-list-item';
 
 const mapStateToProps = (state) => ({
-  products: state.cart,
   currentCurrency: state.currency.currentValue,
 });
 
-export default connect(mapStateToProps)(Cart);
+export default connect(mapStateToProps)(CartListItem);

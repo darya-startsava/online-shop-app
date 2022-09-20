@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Router from './router';
-import Header from './header/header';
+import Header from './header/containers/header';
 
 class App extends React.PureComponent {
   render() {

@@ -1,0 +1,17 @@
+.currency-popup-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.currency-popup {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 200px;
+  z-index: 10;
+  background-color: white;
+}
+
+.currency-popup-show {
+  visibility: visible;
+}

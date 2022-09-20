@@ -7,8 +7,7 @@ import { calculatePriceAndQuantity } from '../../utils/calculatePriceAndQuantity
 
 export default class Cart extends React.PureComponent {
   render() {
-    const { products } = this.props;
-    const currentCurrency = { label: 'USD', symbol: '$' };
+    const { products, currentCurrency } = this.props;
     const result = calculatePriceAndQuantity(products, currentCurrency);
 
     return (
@@ -34,4 +33,5 @@ Cart.propTypes = {
       cartId: PropTypes.string,
     })
   ),
+  currentCurrency: PropTypes.shape({ label: PropTypes.string, symbol: PropTypes.string }),
 };
