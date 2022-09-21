@@ -48,7 +48,6 @@ export default class Product extends React.PureComponent {
   }
   render() {
     const { product, status, currentCurrency } = this.props;
-    console.log(this.props);
 
     if (status === Status.PENDING || status === Status.INIT) {
       return <div>Loading...</div>;

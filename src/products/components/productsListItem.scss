@@ -10,6 +10,10 @@
   .products-list-item-add-button {
     visibility: visible;
   }
+  .products-list-item-add-button:hover {
+    opacity: 1;
+    transition: opacity 0.5s;
+  }
 }
 
 .products-list-item-image {
@@ -18,9 +22,17 @@
   object-fit: cover;
 }
 
+.products-list-item-out-of-stock-title {
+  visibility: hidden;
+  @include mixins.fontRaleway($size: 24px, $color: variables.$font-second-color);
+  text-transform: uppercase;
+  position: relative;
+  bottom: 182px;
+  text-align: center;
+}
+
 .products-list-item-title-wrapper {
   width: 354px;
-  padding-top: 24px;
 }
 .products-list-item-name {
   @include mixins.fontRaleway($weight: 300);
@@ -42,4 +54,32 @@
   background-color: variables.$second-color;
   margin-bottom: -10px;
   margin-top: -20px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.products-list-item-out-of-stock {
+  cursor: auto;
+  .products-list-item-name {
+    @include mixins.fontRaleway($weight: 300, $color: variables.$font-second-color);
+  }
+  .products-list-item-price {
+    @include mixins.fontRaleway($weight: 500, $color: variables.$font-second-color);
+  }
+  .products-list-item-out-of-stock-title {
+    visibility: visible;
+  }
+  a {
+    cursor: auto;
+  }
+  img {
+    opacity: 0.5;
+  }
+}
+
+.products-list-item-out-of-stock:hover {
+  box-shadow: none;
+  .products-list-item-add-button {
+    visibility: hidden;
+  }
 }

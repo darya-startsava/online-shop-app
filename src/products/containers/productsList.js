@@ -6,6 +6,7 @@ import { fetchProducts } from '../actions-creators.js';
 const mapStateToProps = (state, { category }) => ({
   status: state.products.status,
   products: Object.values(state.products.data),
+  currentCurrency: state.currency.currentValue,
 });
 const mapDispatchToProps = (dispatch) => ({
   fetchProducts: (category) => dispatch(fetchProducts(category)),

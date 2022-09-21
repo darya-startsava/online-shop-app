@@ -20,7 +20,7 @@ class ProductsList extends React.PureComponent {
   }
 
   render() {
-    const { products, status } = this.props;
+    const { products, status, currentCurrency } = this.props;
     if (status === Status.PENDING) {
       return <div>Loading...</div>;
     }
@@ -29,7 +29,9 @@ class ProductsList extends React.PureComponent {
         <>
           <div className="products-list-wrapper">
             {products.map((i) => {
-              const price = i?.prices?.filter((item) => item?.currency?.symbol === '$')[0];
+              const price = i?.prices?.filter(
+                (item) => item?.currency?.symbol === currentCurrency.symbol
+              )[0];
               return <ProductsListItem key={i.id} product={i} price={price} />;
             })}
           </div>
@@ -44,6 +46,7 @@ ProductsList.propTypes = {
   status: PropTypes.string,
   category: PropTypes.string,
   fetchProducts: PropTypes.func.isRequired,
+  currentCurrency: PropTypes.shape({ label: PropTypes.string, symbol: PropTypes.string }),
 };
 
 export default ProductsList;
