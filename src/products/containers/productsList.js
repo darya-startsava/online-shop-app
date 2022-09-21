@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ProductsList from '../components/products-list';
+import ProductsList from '../components/productsList';
 import withRouter from '../../utils/withRouter';
 import { fetchProducts } from '../actions-creators.js';
 

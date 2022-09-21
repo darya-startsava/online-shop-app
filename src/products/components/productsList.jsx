@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Status from '../../utils/status';
-import ProductsListItem from '../containers/product-list-item';
+import ProductsListItem from '../containers/productsListItem';
+import './productsList.scss';
 
 class ProductsList extends React.PureComponent {
   componentDidMount(prevProps) {
@@ -26,8 +27,7 @@ class ProductsList extends React.PureComponent {
     if (status === Status.SUCCESS) {
       return (
         <>
-          <div>
-            Products:
+          <div className="products-list-wrapper">
             {products.map((i) => {
               const price = i?.prices?.filter((item) => item?.currency?.symbol === '$')[0];
               return <ProductsListItem key={i.id} product={i} price={price} />;

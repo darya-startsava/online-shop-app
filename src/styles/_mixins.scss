@@ -1,0 +1,7 @@
+@use '../styles/variables';
+@mixin fontRaleway($weight: 400, $size: 18px) {
+  font-weight: $weight;
+  font-family: 'Raleway', sans-serif;
+  font-size: $size;
+  color: variables.$font-color;
+}

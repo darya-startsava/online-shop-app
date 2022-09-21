@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ProductsList from '../../products/containers/products-list';
+import ProductsList from '../../products/containers/productsList';
+import './category.scss';
 
 class Category extends React.PureComponent {
   render() {
@@ -8,7 +9,7 @@ class Category extends React.PureComponent {
     const category = params?.category || defaultCategory;
     return (
       <>
-        <div>Category: {category}</div>
+        <div className="category-page-title">{category}</div>
         <ProductsList category={category} />
       </>
     );

@@ -1,4 +1,4 @@
-import ProductsListItem from '../components/products-list-item';
+import ProductsListItem from '../components/productsListIem';
 import withRouter from '../../utils/withRouter';
 
 export default withRouter(ProductsListItem);
