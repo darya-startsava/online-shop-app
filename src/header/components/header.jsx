@@ -4,7 +4,8 @@ import Categories from '../../categories/containers/categories';
 import { ReactComponent as CartLogo } from '../../assets/cart.svg';
 import { ReactComponent as ShowDropdown } from '../../assets/arrowDown.svg';
 import { ReactComponent as HideDropdown } from '../../assets/arrowUp.svg';
-import './header.css';
+import { ReactComponent as Logo } from '../../assets/logo.svg';
+import './header.scss';
 import CartPopup from '../../cart/containers/cart-popup';
 import CurrencyPopup from '../../currencyPopup/containers/currencyPopup';
 
@@ -54,21 +55,35 @@ export default class Header extends React.PureComponent {
     return (
       <div className="header-wrapper">
         <Categories />
-        <button onClick={this.handleOpenCurrencyPopup}>
-          {currentCurrency?.symbol}
-          {this.state.showCurrencyPopup ? <HideDropdown /> : <ShowDropdown />}
-        </button>
-        <button onClick={this.handleOpenCartPopup}>
-          <CartLogo />
-        </button>
+        <Logo className="header-logo" />
+        <div className="header-buttons-wrapper">
+          <button
+            className="header-button header-change-currency-button"
+            onClick={this.handleOpenCurrencyPopup}
+            aria-label="change currency"
+          >
+            {currentCurrency?.symbol}{' '}
+            {this.state.showCurrencyPopup ? <HideDropdown /> : <ShowDropdown />}
+          </button>
+          <button
+            className="header-button header-open-cart-button"
+            onClick={this.handleOpenCartPopup}
+            aria-label="open cart"
+          >
+            <CartLogo />
+          </button>
 
-        <CartPopup showCartPopup={this.state.showCartPopup} hidePopup={this.handleHideCartPopup} />
-        <CurrencyPopup
-          currencies={currencies}
-          currentCurrency={currentCurrency}
-          showCurrencyPopup={this.state.showCurrencyPopup}
-          hidePopup={this.handleHideCurrencyPopup}
-        />
+          <CartPopup
+            showCartPopup={this.state.showCartPopup}
+            hidePopup={this.handleHideCartPopup}
+          />
+          <CurrencyPopup
+            currencies={currencies}
+            currentCurrency={currentCurrency}
+            showCurrencyPopup={this.state.showCurrencyPopup}
+            hidePopup={this.handleHideCurrencyPopup}
+          />
+        </div>
       </div>
     );
   }

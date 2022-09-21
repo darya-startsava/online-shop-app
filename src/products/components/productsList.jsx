@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Status from '../../utils/status';
 import ProductsListItem from '../containers/productsListItem';
 import './productsList.scss';
+import Loading from '../../reusableComponents/loading';
 
 class ProductsList extends React.PureComponent {
   componentDidMount(prevProps) {
@@ -22,7 +23,7 @@ class ProductsList extends React.PureComponent {
   render() {
     const { products, status, currentCurrency } = this.props;
     if (status === Status.PENDING) {
-      return <div>Loading...</div>;
+      return <Loading />;
     }
     if (status === Status.SUCCESS) {
       return (

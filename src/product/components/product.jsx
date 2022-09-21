@@ -4,6 +4,7 @@ import Status from '../../utils/status';
 import './product.css';
 import Button from '../../reusableComponents/button';
 import { productPropTypes } from '../../utils/propTypes';
+import Loading from '../../reusableComponents/loading';
 
 export default class Product extends React.PureComponent {
   constructor(props) {
@@ -50,7 +51,7 @@ export default class Product extends React.PureComponent {
     const { product, status, currentCurrency } = this.props;
 
     if (status === Status.PENDING || status === Status.INIT) {
-      return <div>Loading...</div>;
+      return <Loading />;
     }
 
     if (status === Status.SUCCESS) {

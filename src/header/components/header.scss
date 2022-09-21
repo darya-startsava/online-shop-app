@@ -1,0 +1,33 @@
+@use '../../styles/mixins';
+@use '../../styles/variables';
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 100px;
+  height: 80px;
+}
+
+.header-logo {
+  margin-right: 165px;
+  align-self: center;
+  margin-top: -6px;
+}
+
+.header-buttons-wrapper {
+  display: flex;
+  column-gap: 10px;
+  align-self: center;
+  margin-top: -8px;
+}
+
+.header-change-currency-button {
+  @include mixins.fontRaleway($weight: 500);
+}
+
+.header-button {
+  border: none;
+  border-radius: 50%;
+  background-color: variables.$background-color;
+  cursor: pointer;
+}

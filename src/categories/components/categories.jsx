@@ -2,22 +2,45 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Status from '../../utils/status';
 import { Link } from 'react-router-dom';
+import './categories.scss';
+import Loading from '../../reusableComponents/loading';
 
 export default class Categories extends React.PureComponent {
-  componentDidMount() {
-    this.props.fetchCategories();
+  constructor(props) {
+    super(props);
+    this.state = { currentCategory: null };
+    this.handleClick = this.handleClick.bind(this);
+  }
+  async componentDidMount() {
+    const categories = await this.props.fetchCategories();
+    this.setState({ currentCategory: categories[0] });
+  }
+
+  handleClick(category) {
+    this.setState({ currentCategory: category });
   }
 
   render() {
+    console.log(this.state);
     const { categories, status } = this.props;
     if (status === Status.PENDING) {
-      return <div>Loading...</div>;
+      return <Loading />;
     }
     if (status === Status.SUCCESS) {
       return (
-        <div>
+        <div className="categories-wrapper">
           {categories.map((i) => (
-            <Link key={i} to={`category/${i}`}>
+            <Link
+              className={
+                this.state.currentCategory === i
+                  ? 'categories-nav-item active'
+                  : 'categories-nav-item'
+              }
+              key={i}
+              to={`category/${i}`}
+              aria-label="select category"
+              onClick={() => this.handleClick(i)}
+            >
               {i}
             </Link>
           ))}

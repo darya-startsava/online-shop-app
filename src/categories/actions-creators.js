@@ -12,6 +12,7 @@ export const fetchCategories = async (dispatch) => {
     });
     const { categories } = await queryCategories();
     dispatch({ type: FETCH_CATEGORIES_SUCCESS, categories: categories.map((i) => i.name) });
+    return categories.map((i) => i.name);
   } catch {
     dispatch({ type: FETCH_CATEGORIES_ERROR });
   }

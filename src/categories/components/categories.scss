@@ -1,0 +1,30 @@
+@use '../../styles/mixins';
+@use '../../styles/variables';
+
+.categories-wrapper {
+  display: flex;
+  @include mixins.fontRaleway($size: 16px);
+  text-transform: uppercase;
+  padding-top: 2px;
+}
+
+.categories-nav-item {
+  position: relative;
+  text-align: center;
+  padding: 18px 16px 0 16px;
+}
+
+.active {
+  @include mixins.fontRaleway($size: 16px, $color: variables.$font-chosen-category-color);
+}
+
+.active::after {
+  position: absolute;
+  content: '';
+  height: 2px;
+  bottom: -12px;
+  margin-bottom: 20px;
+  left: 0;
+  right: 0;
+  background: variables.$primary-color;
+}
