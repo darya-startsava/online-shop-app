@@ -1,4 +1,7 @@
+@use '../styles/mixins';
+
 .loading {
   margin: 0 100px;
+  @include mixins.fontRaleway;
   text-align: center;
 }

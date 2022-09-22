@@ -15,7 +15,7 @@
 }
 
 .active {
-  @include mixins.fontRaleway($size: 16px, $color: variables.$font-chosen-category-color);
+  @include mixins.fontRaleway($size: 16px, $color: variables.$item-chosen-color);
 }
 
 .active::after {

@@ -1,7 +1,23 @@
 @use '../styles/variables';
+
 @mixin fontRaleway($weight: 400, $size: 18px, $color: variables.$font-primary-color) {
   font-weight: $weight;
   font-family: 'Raleway', sans-serif;
+  font-size: $size;
+  color: $color;
+}
+
+@mixin fontRobotoCondensed($weight: 700, $size: 18px, $color: variables.$font-primary-color) {
+  font-weight: $weight;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: $size;
+  color: $color;
+  text-transform: uppercase;
+}
+
+@mixin fontRoboto($weight: 400, $size: 16px, $color: variables.$font-primary-color) {
+  font-weight: $weight;
+  font-family: 'Roboto', sans-serif;
   font-size: $size;
   color: $color;
 }
