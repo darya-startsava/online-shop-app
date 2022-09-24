@@ -1,6 +1,6 @@
 import { PropTypes } from 'prop-types';
 import React from 'react';
-import CartListItem from '../containers/cart-list-item';
+import CartListItem from '../containers/cartListItem';
 import { productPropTypes } from '../../utils/propTypes';
 
 export default class CartList extends React.PureComponent {

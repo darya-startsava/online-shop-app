@@ -1,5 +1,8 @@
 import { PropTypes } from 'prop-types';
 import React from 'react';
+import { ReactComponent as Plus } from '../../assets/plus.svg';
+import { ReactComponent as Minus } from '../../assets/minus.svg';
+import './changeCount.scss';
 
 export default class ChangeCount extends React.PureComponent {
   constructor(props) {
@@ -19,10 +22,14 @@ export default class ChangeCount extends React.PureComponent {
   render() {
     const { count } = this.props;
     return (
-      <div>
-        <button onClick={this.increment}>+</button>
-        <div>{count}</div>
-        <button onClick={this.decrement}>-</button>
+      <div className="change-count-wrapper">
+        <button className="change-count-button" onClick={this.increment}>
+          <Plus />
+        </button>
+        <div className="change-count-counter">{count}</div>
+        <button className="change-count-button" onClick={this.decrement}>
+          <Minus />
+        </button>
       </div>
     );
   }

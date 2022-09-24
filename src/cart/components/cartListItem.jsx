@@ -2,7 +2,10 @@ import { PropTypes } from 'prop-types';
 import React from 'react';
 import ChangeCount from '../../changeCount/containers/changeCount';
 import { productPropTypes } from '../../utils/propTypes';
-import './cart-list-item.css';
+import { ReactComponent as ArrowLeft } from '../../assets/arrowLeft.svg';
+import { ReactComponent as ArrowRight } from '../../assets/arrowRight.svg';
+import './cartListItem.scss';
+import ProductAttributes from '../../reusableComponents/productAttributes/productAttributes';
 
 export default class CartListItem extends React.PureComponent {
   constructor(props) {
@@ -40,36 +43,36 @@ export default class CartListItem extends React.PureComponent {
     const { product, cartId, count, selectedAttributes, currentCurrency } = this.props;
     const price = product.prices.filter((i) => i.currency.label === currentCurrency.label)[0];
     return (
-      <div className="cart-list-item-wrapper">
-        <div>
-          <div>{product.brand}</div>
-          <div>{product.name}</div>
-          <div>{price.currency.symbol + price.amount}</div>
-          {product.attributes &&
-            product.attributes.map((i) => (
-              <div key={i.id}>
-                <div>{i.name}:</div>
-                <div className="product-attribute-items">
-                  {i.items &&
-                    i.items.map((item) => (
-                      <button
-                        className={item.id === selectedAttributes[i.id] ? 'selected' : ''}
-                        key={item.id}
-                      >
-                        {item.displayValue}
-                      </button>
-                    ))}
-                </div>
+      <>
+        <div className="cart-list-item-wrapper">
+          <div className="cart-list-item-info-wrapper">
+            <div className="cart-list-item-brand">{product.brand}</div>
+            <div className="cart-list-item-name">{product.name}</div>
+            <div className="cart-list-item-price">{price.currency.symbol + price.amount}</div>
+            <ProductAttributes
+              product={product}
+              selectedAttributes={selectedAttributes}
+              isDisabled={true}
+              page="cart"
+            />
+          </div>
+          <div className="cart-list-item-right-wrapper">
+            <ChangeCount cartId={cartId} count={count} />
+            <div className="cart-list-item-product-image-wrapper">
+              <img className="cart-list-item-product-image" src={this.state.imageUrl} alt="" />
+              <div className="cart-list-item-arrow-wrapper">
+                <button className="cart-list-item-arrow" onClick={this.handleClickLeft}>
+                  <ArrowLeft />
+                </button>
+                <button className="cart-list-item-arrow" onClick={this.handleClickRight}>
+                  <ArrowRight />
+                </button>
               </div>
-            ))}
+            </div>
+          </div>
         </div>
-        <ChangeCount cartId={cartId} count={count} />
-        <div>
-          <img className="cart-list-item-product-image" src={this.state.imageUrl} alt="" />
-          <button onClick={this.handleClickLeft}>&lt;</button>
-          <button onClick={this.handleClickRight}>&gt;</button>
-        </div>
-      </div>
+        <hr />
+      </>
     );
   }
 }

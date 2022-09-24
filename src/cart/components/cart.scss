@@ -1,0 +1,39 @@
+@use '../../styles/mixins';
+
+.cart-wrapper {
+  margin: 73px 100px 100px 100px;
+}
+
+.cart-title {
+  @include mixins.fontRaleway($weight: 700, $size: 32px);
+  text-transform: uppercase;
+  margin-bottom: 55px;
+}
+
+.cart-total-information-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 8px;
+  @include mixins.fontRaleway($weight: 400, $size: 24px);
+  width: 280px;
+  margin-top: 29px;
+  column-gap: 8px;
+}
+
+.cart-total-information-wrapper-right {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  font-weight: 700;
+}
+
+.cart-total-information-wrapper-left {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+
+.cart-total {
+  font-weight: 500;
+  margin-bottom: 9px;
+}

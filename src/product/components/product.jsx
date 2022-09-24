@@ -5,13 +5,15 @@ import './product.scss';
 import Button from '../../reusableComponents/button';
 import { productPropTypes } from '../../utils/propTypes';
 import Loading from '../../reusableComponents/loading';
+import ProductAttributes from '../../reusableComponents/productAttributes/productAttributes';
 
 export default class Product extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = { imageUrl: '', selectedAttributes: [] };
+    this.state = { imageUrl: '', selectedAttributes: {} };
     this.handleClick = this.handleClick.bind(this);
     this.handleImageClick = this.handleImageClick.bind(this);
+    this.handleAttributeClick = this.handleAttributeClick.bind(this);
   }
   async componentDidMount() {
     const { params, product, fetchProduct, fetchCurrencies } = this.props;
@@ -75,32 +77,18 @@ export default class Product extends React.PureComponent {
           <div className="product-information-wrapper">
             <div className="product-brand">{product.brand}</div>
             <div className="product-name">{product.name}</div>
-            {product.attributes &&
-              product.attributes.map((i) => (
-                <div className="product-attributes-wrapper" key={i.id}>
-                  <div className="product-attribute-title">{i.name}:</div>
-                  <div className={'product-attribute-items-' + i.type}>
-                    {i.items &&
-                      i.items.map((item) => (
-                        <button
-                          className={
-                            item.id === this.state.selectedAttributes[i.id]
-                              ? ' selected'
-                              : ' notSelected'
-                          }
-                          style={{ backgroundColor: item.value }}
-                          key={item.id}
-                          onClick={() => this.handleAttributeClick(i.id, item.id)}
-                        >
-                          {i.type === 'text' && item.value}
-                        </button>
-                      ))}
-                  </div>
-                </div>
-              ))}
+            <ProductAttributes
+              product={product}
+              selectedAttributes={this.state.selectedAttributes}
+              handleAttributeClick={this.handleAttributeClick}
+              isDisabled={false}
+              page="product"
+            />
             <div className="product-attribute-title">Price:</div>
             <div className="product-price">{price?.currency?.symbol + price?.amount}</div>
-            <Button onClick={this.handleClick}>add to cart</Button>
+            <Button onClick={this.handleClick} page="product">
+              add to cart
+            </Button>
             <div
               className="product-description"
               dangerouslySetInnerHTML={{ __html: product.description }}

@@ -4,9 +4,9 @@ import './button.scss';
 
 export default class Button extends React.PureComponent {
   render() {
-    const { children, onClick } = this.props;
+    const { children, onClick, page } = this.props;
     return (
-      <button className="button-reusable" onClick={onClick}>
+      <button className={`button-reusable button-reusable-page-${page}`} onClick={onClick}>
         {children}
       </button>
     );
@@ -14,6 +14,7 @@ export default class Button extends React.PureComponent {
 }
 
 Button.propTypes = {
+  page: PropTypes.string,
   children: PropTypes.node,
   onClick: PropTypes.func,
 };

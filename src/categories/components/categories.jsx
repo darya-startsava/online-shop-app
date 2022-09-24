@@ -21,7 +21,6 @@ export default class Categories extends React.PureComponent {
   }
 
   render() {
-    console.log(this.state);
     const { categories, status } = this.props;
     if (status === Status.PENDING) {
       return <Loading />;

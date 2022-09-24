@@ -2,8 +2,8 @@ import { PropTypes } from 'prop-types';
 import React from 'react';
 import { productPropTypes } from '../../utils/propTypes';
 import Button from '../../reusableComponents/button';
-import CartList from './cart-list';
-import './cart-popup.css';
+import CartList from './cartList';
+import './cartPopup.scss';
 import { calculatePriceAndQuantity } from '../../utils/calculatePriceAndQuantity';
 
 export default class CartPopup extends React.PureComponent {
@@ -35,8 +35,12 @@ export default class CartPopup extends React.PureComponent {
         <div>My bag: {result.quantity} items</div>
         <CartList products={products} />
         <div>Total {currentCurrency.symbol + Math.round(result.totalPrice * 100) / 100}</div>
-        <Button onClick={this.handleClick}>view bag</Button>
-        <Button onClick={this.handleHideCartPopup}>check out</Button>
+        <Button onClick={this.handleClick} page="cart">
+          view bag
+        </Button>
+        <Button onClick={this.handleHideCartPopup} page="cart">
+          check out
+        </Button>
       </div>
     );
   }

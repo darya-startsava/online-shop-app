@@ -1,9 +1,0 @@
-.cart-list-item-wrapper {
-  display: flex;
-}
-
-.cart-list-item-product-image {
-  height: 288px;
-  width: 200px;
-  object-fit: cover;
-}

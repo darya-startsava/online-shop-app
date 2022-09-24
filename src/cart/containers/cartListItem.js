@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import CartListItem from '../components/cart-list-item';
+import CartListItem from '../components/cartListItem';
 
 const mapStateToProps = (state) => ({
   currentCurrency: state.currency.currentValue,

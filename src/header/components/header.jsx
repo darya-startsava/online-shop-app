@@ -6,7 +6,7 @@ import { ReactComponent as ShowDropdown } from '../../assets/arrowDown.svg';
 import { ReactComponent as HideDropdown } from '../../assets/arrowUp.svg';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import './header.scss';
-import CartPopup from '../../cart/containers/cart-popup';
+import CartPopup from '../../cart/containers/cartPopup';
 import CurrencyPopup from '../../currencyPopup/containers/currencyPopup';
 
 export default class Header extends React.PureComponent {

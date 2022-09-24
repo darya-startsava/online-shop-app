@@ -1,0 +1,19 @@
+@use '../../styles/mixins';
+
+.change-count-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 288px;
+  margin: 17px 0;
+}
+
+.change-count-button {
+  width: 45px;
+  height: 45px;
+}
+
+.change-count-counter {
+  @include mixins.fontRaleway($weight: 500, $size: 24px);
+  text-align: center;
+}
