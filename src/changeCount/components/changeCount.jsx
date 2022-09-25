@@ -20,9 +20,9 @@ export default class ChangeCount extends React.PureComponent {
     decrementProductCount(cartId);
   }
   render() {
-    const { count } = this.props;
+    const { count, page } = this.props;
     return (
-      <div className="change-count-wrapper">
+      <div className={`change-count-wrapper change-count-wrapper-page-${page}`}>
         <button className="change-count-button" onClick={this.increment}>
           <Plus />
         </button>
@@ -38,6 +38,7 @@ export default class ChangeCount extends React.PureComponent {
 ChangeCount.propTypes = {
   count: PropTypes.number,
   cartId: PropTypes.string,
+  page: PropTypes.string,
   incrementProductCount: PropTypes.func,
   decrementProductCount: PropTypes.func,
 };

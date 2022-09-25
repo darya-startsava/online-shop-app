@@ -3,8 +3,14 @@
 .button-reusable {
   text-transform: uppercase;
   background-color: variables.$background-button-color;
-  border: none;
+  border: solid variables.$background-primary-color;
   width: inherit;
+}
+
+.button-reusable:hover {
+  background-color: variables.$background-primary-color;
+  border: solid variables.$font-primary-color;
+  color: variables.$font-primary-color;
 }
 
 .button-reusable-page-product {
@@ -15,4 +21,11 @@
 .button-reusable-page-cart {
   @include mixins.fontRaleway($weight: 600, $size: 14px, $color: variables.$font-light-color);
   padding: 14px;
+  margin-bottom: 20px;
+}
+
+.button-reusable-page-cartPopup {
+  @include mixins.fontRaleway($weight: 600, $size: 14px, $color: variables.$font-light-color);
+  padding: 14px;
+  width: 100%;
 }

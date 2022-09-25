@@ -32,15 +32,24 @@ export default class CartPopup extends React.PureComponent {
     if (showCartPopup) cartPopup += ' cart-popup-show';
     return (
       <div className={cartPopup}>
-        <div>My bag: {result.quantity} items</div>
-        <CartList products={products} />
-        <div>Total {currentCurrency.symbol + Math.round(result.totalPrice * 100) / 100}</div>
-        <Button onClick={this.handleClick} page="cart">
-          view bag
-        </Button>
-        <Button onClick={this.handleHideCartPopup} page="cart">
-          check out
-        </Button>
+        <div className="cart-popup-title">
+          <b>My bag,</b> {result.quantity} items
+        </div>
+        <CartList products={products} page="cartPopup" />
+        <div className="cart-popup-total">
+          <span className="cart-popup-total-left">Total</span>
+          <span className="cart-popup-total-right">
+            {currentCurrency.symbol + Math.round(result.totalPrice * 100) / 100}
+          </span>
+        </div>
+        <div className="cart-popup-buttons-wrapper">
+          <Button onClick={this.handleClick} page="cartPopup">
+            view bag
+          </Button>
+          <Button onClick={this.handleHideCartPopup} page="cartPopup">
+            check out
+          </Button>
+        </div>
       </div>
     );
   }

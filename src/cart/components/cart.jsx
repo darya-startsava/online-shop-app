@@ -15,7 +15,7 @@ export default class Cart extends React.PureComponent {
       <div className="cart-wrapper">
         <div className="cart-title">Cart</div>
         <hr />
-        <CartList products={products} />
+        <CartList products={products} page="cart" />
         <div className="cart-total-information-wrapper">
           <div className="cart-total-information-wrapper-left">
             <div>Tax 21%:</div>

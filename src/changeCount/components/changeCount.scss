@@ -1,19 +1,44 @@
 @use '../../styles/mixins';
+@use '../../styles/variables';
 
 .change-count-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  .change-count-counter {
+    text-align: center;
+  }
+  button {
+    border-radius: 0;
+    background-color: variables.$background-primary-color;
+  }
+}
+
+.change-count-wrapper-page-cart {
   height: 288px;
   margin: 17px 0;
+
+  .change-count-button {
+    width: 45px;
+    height: 45px;
+  }
+
+  .change-count-counter {
+    @include mixins.fontRaleway($weight: 500, $size: 24px);
+  }
 }
 
-.change-count-button {
-  width: 45px;
-  height: 45px;
-}
+.change-count-wrapper-page-cartPopup {
+  height: 190px;
+  margin: 17px 0;
 
-.change-count-counter {
-  @include mixins.fontRaleway($weight: 500, $size: 24px);
-  text-align: center;
+  .change-count-button {
+    width: 24px;
+    height: 25px;
+  }
+
+  .change-count-counter {
+    @include mixins.fontRaleway($weight: 500, $size: 16px);
+  }
 }

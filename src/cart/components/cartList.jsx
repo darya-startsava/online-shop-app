@@ -5,11 +5,11 @@ import { productPropTypes } from '../../utils/propTypes';
 
 export default class CartList extends React.PureComponent {
   render() {
-    const { products } = this.props;
+    const { products, page } = this.props;
     return (
       <>
         {products.map((i) => (
-          <CartListItem key={i.cartId} {...i} />
+          <CartListItem key={i.cartId} {...i} page={page} />
         ))}
       </>
     );
@@ -26,4 +26,5 @@ CartList.propTypes = {
       cartId: PropTypes.string,
     })
   ),
+  page: PropTypes.string,
 };
