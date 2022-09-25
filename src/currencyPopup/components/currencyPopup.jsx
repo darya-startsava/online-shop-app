@@ -1,6 +1,6 @@
 import { PropTypes } from 'prop-types';
 import React from 'react';
-import './currencyPopup.css';
+import './currencyPopup.scss';
 
 export default class CurrencyPopup extends React.PureComponent {
   constructor(props) {
@@ -22,7 +22,7 @@ export default class CurrencyPopup extends React.PureComponent {
         <div className="currency-popup-wrapper">
           {currencies?.map((currency) => (
             <button key={currency.label} onClick={() => this.handleClick(currency)}>
-              {currency.label + '' + currency.symbol}
+              {currency.symbol + ' ' + currency.label}
             </button>
           ))}
         </div>
