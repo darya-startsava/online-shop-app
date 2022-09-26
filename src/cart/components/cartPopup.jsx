@@ -28,6 +28,7 @@ export default class CartPopup extends React.PureComponent {
     const { currentCurrency } = this.props;
     const { products, showCartPopup } = this.props;
     const result = calculatePriceAndQuantity(products, currentCurrency);
+    const totalPrice = currentCurrency.symbol + Math.round(result.totalPrice * 100) / 100;
     let cartPopup = 'cart-popup';
     if (showCartPopup) cartPopup += ' cart-popup-show';
     return (
@@ -38,9 +39,7 @@ export default class CartPopup extends React.PureComponent {
         <CartList products={products} page="cartPopup" />
         <div className="cart-popup-total">
           <span className="cart-popup-total-left">Total</span>
-          <span className="cart-popup-total-right">
-            {currentCurrency.symbol + Math.round(result.totalPrice * 100) / 100}
-          </span>
+          <span className="cart-popup-total-right">{totalPrice || 0}</span>
         </div>
         <div className="cart-popup-buttons-wrapper">
           <Button onClick={this.handleClick} page="cartPopup">

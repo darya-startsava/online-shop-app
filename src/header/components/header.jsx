@@ -8,6 +8,8 @@ import { ReactComponent as Logo } from '../../assets/logo.svg';
 import './header.scss';
 import CartPopup from '../../cart/containers/cartPopup';
 import CurrencyPopup from '../../currencyPopup/containers/currencyPopup';
+import { productPropTypes } from '../../utils/propTypes';
+import { calculateQuantity } from '../../utils/calculatePriceAndQuantity';
 
 export default class Header extends React.PureComponent {
   constructor(props) {
@@ -51,7 +53,8 @@ export default class Header extends React.PureComponent {
   }
 
   render() {
-    const { currentCurrency, currencies } = this.props;
+    const { currentCurrency, currencies, products } = this.props;
+    const productCount = calculateQuantity(products);
     return (
       <div className="header-wrapper">
         <Categories />
@@ -71,6 +74,9 @@ export default class Header extends React.PureComponent {
             aria-label="open cart"
           >
             <CartLogo />
+            {productCount && (
+              <div className="header-open-cart-button-product-count">{productCount}</div>
+            )}
           </button>
 
           <CartPopup
@@ -90,6 +96,15 @@ export default class Header extends React.PureComponent {
 }
 
 Header.propTypes = {
+  products: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      product: PropTypes.shape(productPropTypes),
+      count: PropTypes.number,
+      selectedAttributes: PropTypes.object,
+      cartId: PropTypes.string,
+    })
+  ),
   currentCurrency: PropTypes.shape({ label: PropTypes.string, symbol: PropTypes.string }),
   currencies: PropTypes.arrayOf(
     PropTypes.shape({ label: PropTypes.string, symbol: PropTypes.string })

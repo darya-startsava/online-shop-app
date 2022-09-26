@@ -29,5 +29,18 @@
   border: none;
   border-radius: 50%;
   background-color: variables.$background-primary-color;
-  cursor: pointer;
+}
+
+.header-open-cart-button {
+  position: relative;
+}
+
+.header-open-cart-button-product-count {
+  position: absolute;
+  top: -7px;
+  right: -6px;
+  border-radius: 50%;
+  background-color: variables.$background-second-color;
+  color: variables.$font-light-color;
+  padding: 2px 6px;
 }

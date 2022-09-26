@@ -58,6 +58,7 @@ export default class Product extends React.PureComponent {
 
     if (status === Status.SUCCESS) {
       const price = product.prices.filter((i) => i.currency.label === currentCurrency?.label)[0];
+      const productPrice = price?.currency?.symbol + price?.amount;
       return (
         <div className="product-wrapper">
           <div className="product-image-preview-list">
@@ -85,7 +86,7 @@ export default class Product extends React.PureComponent {
               page="product"
             />
             <div className="product-attribute-title">Price:</div>
-            <div className="product-price">{price?.currency?.symbol + price?.amount}</div>
+            <div className="product-price">{productPrice || ' '}</div>
             <Button onClick={this.handleClick} page="product">
               add to cart
             </Button>

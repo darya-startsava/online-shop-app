@@ -11,11 +11,12 @@ export default class ProductAttributes extends React.PureComponent {
 
   render() {
     const { product, selectedAttributes, isDisabled, page } = this.props;
+    const disabled = isDisabled ? 'disabled' : '';
     return (
       <>
         {product.attributes &&
           product.attributes.map((i) => (
-            <div className={`product-attributes-wrapper-page-${page}`} key={i.id}>
+            <div className={`product-attributes-wrapper-page-${page} ${disabled}`} key={i.id}>
               <div className="product-attribute-title">{i.name}:</div>
               <div className={`product-attribute-items-${i.type} ${i.type}-page-${page}`}>
                 {i.items &&

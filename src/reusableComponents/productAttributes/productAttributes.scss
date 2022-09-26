@@ -85,3 +85,9 @@
     @include mixins.fontRaleway($size: 14px);
   }
 }
+
+.disabled {
+  button {
+    cursor: auto;
+  }
+}

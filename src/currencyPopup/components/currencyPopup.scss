@@ -8,7 +8,6 @@
     @include mixins.fontRaleway($weight: 500, $size: 18px);
     border: none;
     background-color: variables.$background-primary-color;
-    cursor: pointer;
     width: 114px;
     padding: 15px 0;
   }

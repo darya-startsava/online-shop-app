@@ -22,6 +22,7 @@ export default class ProductsListItem extends React.PureComponent {
     const { product, price } = this.props;
     let classNameProductsListItemWrapper = 'products-list-item-wrapper';
     if (!product.inStock) classNameProductsListItemWrapper += ' products-list-item-out-of-stock';
+    const productPrice = price?.currency?.symbol + price?.amount;
     return (
       <div className={classNameProductsListItemWrapper}>
         <Link
@@ -33,9 +34,7 @@ export default class ProductsListItem extends React.PureComponent {
           <div className="products-list-item-out-of-stock-title">out of stock</div>
           <div className="products-list-item-title-wrapper">
             <div className="products-list-item-name">{product.brand + ' ' + product.name}</div>
-            <div className="products-list-item-price">
-              {price?.currency?.symbol + price?.amount}
-            </div>
+            <div className="products-list-item-price">{productPrice || ' '}</div>
           </div>
         </Link>
         <button
