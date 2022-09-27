@@ -2,25 +2,23 @@
 @use '../../styles/variables';
 
 .cart-popup {
-  visibility: hidden;
   position: absolute;
-  top: 70px;
-  right: 74px;
+  top: 0px;
+  right: 106px;
   z-index: 10;
   background-color: variables.$background-primary-color;
   min-width: 293px;
+  max-height: 680px;
   padding: 0 16px;
-  border: solid;
-}
-
-.cart-popup-show {
-  visibility: visible;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
 .cart-popup-title {
   @include mixins.fontRaleway($weight: 500, $size: 16px);
   margin-top: 36px;
   margin-bottom: 19px;
+  text-transform: capitalize;
 }
 
 .cart-popup-total {

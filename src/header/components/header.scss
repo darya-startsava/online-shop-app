@@ -2,10 +2,15 @@
 @use '../../styles/variables';
 
 .header-wrapper {
+  position: fixed;
+  top: 0;
+  width: 1240px;
   display: flex;
   justify-content: space-between;
-  margin: 0 100px;
+  margin: 0 100px 0px 100px;
   height: 80px;
+  background-color: variables.$background-primary-color;
+  z-index: 10;
 }
 
 .header-logo {
