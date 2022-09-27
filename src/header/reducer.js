@@ -1,11 +1,12 @@
 import Status from '../utils/status';
 import { FETCH_CURRENCY_SUCCESS, FETCH_CURRENCY_PENDING, FETCH_CURRENCY_ERROR } from './actions';
 import { CHANGE_CURRENCY } from '../currencyPopup/actions';
+import { defineState } from 'redux-localstore';
 
-export default function reducer(
-  state = { allValues: [], currentValue: {}, status: Status.INIT },
-  action
-) {
+const defaultState = { allValues: [], currentValue: {}, status: Status.INIT };
+const initialState = defineState(defaultState)('currency');
+
+export default function reducer(state = initialState, action) {
   switch (action.type) {
     case FETCH_CURRENCY_SUCCESS: {
       return {

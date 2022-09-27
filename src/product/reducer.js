@@ -1,7 +1,12 @@
 import { INCREMENT_PRODUCT_IN_CART, DECREMENT_PRODUCT_IN_CART } from '../changeCount/actions';
 import { ADD_PRODUCT_TO_CART } from './actions';
+import { defineState } from 'redux-localstore';
 
-export default function reducer(state = [], action) {
+const defaultState = [];
+
+const initialState = defineState(defaultState)('cart');
+
+export default function reducer(state = initialState, action) {
   switch (action.type) {
     case ADD_PRODUCT_TO_CART: {
       const index = state?.findIndex((i) => i.cartId === action.cartId);

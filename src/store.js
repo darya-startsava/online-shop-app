@@ -5,6 +5,7 @@ import productsReducer from './products/reducer';
 import cartReducer from './product/reducer';
 import currencyReducer from './header/reducer';
 import { composeEnhancer } from './utils/compose';
+import storeSynchronize from 'redux-localstore';
 
 const compose = composeEnhancer('App Store');
 const store = createStore(
@@ -16,5 +17,7 @@ const store = createStore(
   }),
   compose(applyMiddleware(thunk))
 );
+
+storeSynchronize(store);
 
 export default store;

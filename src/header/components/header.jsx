@@ -25,7 +25,8 @@ export default class Header extends React.PureComponent {
   }
 
   componentDidMount() {
-    this.props.fetchCurrencies();
+    const { currencies } = this.props;
+    if (!currencies.length) this.props.fetchCurrencies();
   }
 
   handleOpenCartPopup() {

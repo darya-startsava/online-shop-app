@@ -16,10 +16,10 @@ export default class Product extends React.PureComponent {
     this.handleAttributeClick = this.handleAttributeClick.bind(this);
   }
   async componentDidMount() {
-    const { params, product, fetchProduct, fetchCurrencies } = this.props;
+    const { params, product, currentCurrency, fetchProduct, fetchCurrencies } = this.props;
     if (!product) {
       const product = await fetchProduct(params.product);
-      fetchCurrencies();
+      if (!Object.keys(currentCurrency).length) fetchCurrencies();
       const selectedAttributes = {};
       product.attributes.forEach((i) => {
         selectedAttributes[i.id] = i.items[0].id;
