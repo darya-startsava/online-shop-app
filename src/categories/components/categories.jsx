@@ -1,23 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Status from '../../utils/status';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './categories.scss';
 import Loading from '../../reusableComponents/loading';
 
 export default class Categories extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = { currentCategory: null };
-    this.handleClick = this.handleClick.bind(this);
-  }
   async componentDidMount() {
-    const categories = await this.props.fetchCategories();
-    this.setState({ currentCategory: categories[0] });
-  }
-
-  handleClick(category) {
-    this.setState({ currentCategory: category });
+    await this.props.fetchCategories();
   }
 
   render() {
@@ -29,19 +19,16 @@ export default class Categories extends React.PureComponent {
       return (
         <div className="categories-wrapper">
           {categories.map((i) => (
-            <Link
-              className={
-                this.state.currentCategory === i
-                  ? 'categories-nav-item active'
-                  : 'categories-nav-item'
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? 'categories-nav-item active' : 'categories-nav-item'
               }
               key={i}
               to={`category/${i}`}
               aria-label="select category"
-              onClick={() => this.handleClick(i)}
             >
               {i}
-            </Link>
+            </NavLink>
           ))}
         </div>
       );
