@@ -1,3 +1,4 @@
+@use './styles/variables';
 .app {
   position: relative;
   z-index: 1;
@@ -10,4 +11,19 @@ a:hover,
 a:active,
 a:link {
   text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: variables.$line-color;
+}
+
+::-webkit-scrollbar-thumb {
+  background: variables.$font-second-color;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: variables.$primary-color;
 }

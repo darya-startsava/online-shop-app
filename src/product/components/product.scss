@@ -36,6 +36,9 @@
   flex-direction: column;
   row-gap: 40px;
   cursor: pointer;
+  max-height: 511px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
 }
 
 .product-image-preview {
