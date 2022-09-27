@@ -1,32 +1,41 @@
 import { PropTypes } from 'prop-types';
 import React from 'react';
+import Overlay from '../../reusableComponents/overlay';
 import './currencyPopup.scss';
 
 export default class CurrencyPopup extends React.PureComponent {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.closePopup = this.closePopup.bind(this);
+  }
+  closePopup() {
+    const { hidePopup } = this.props;
+    hidePopup();
   }
 
   handleClick(currency) {
-    const { changeCurrency, hidePopup } = this.props;
+    const { changeCurrency } = this.props;
     changeCurrency(currency);
-    hidePopup(currency);
+    this.closePopup();
   }
+
   render() {
     const { currencies, showCurrencyPopup } = this.props;
-    let currencyPopup = 'currency-popup';
-    if (showCurrencyPopup) currencyPopup += ' currency-popup-show';
     return (
-      <div className={currencyPopup}>
-        <div className="currency-popup-wrapper">
-          {currencies?.map((currency) => (
-            <button key={currency.label} onClick={() => this.handleClick(currency)}>
-              {currency.symbol + ' ' + currency.label}
-            </button>
-          ))}
-        </div>
-      </div>
+      showCurrencyPopup && (
+        <Overlay popup="currency" closePopup={this.closePopup}>
+          <div className="currency-popup-wrapper">
+            <div className="currency-popup-items-wrapper">
+              {currencies?.map((currency) => (
+                <button key={currency.label} onClick={() => this.handleClick(currency)}>
+                  {currency.symbol + ' ' + currency.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        </Overlay>
+      )
     );
   }
 }

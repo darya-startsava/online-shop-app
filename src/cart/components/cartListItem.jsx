@@ -66,7 +66,7 @@ export default class CartListItem extends React.PureComponent {
                 src={this.state.imageUrl}
                 alt=""
               />
-              {page === 'cart' && (
+              {page === 'cart' && product.gallery.length > 1 && (
                 <div className="cart-list-item-arrow-wrapper">
                   <button className="cart-list-item-arrow" onClick={this.handleClickLeft}>
                     <ArrowLeft />

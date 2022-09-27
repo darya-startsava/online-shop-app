@@ -1,10 +1,17 @@
 @use '../../styles/mixins';
 @use '../../styles/variables';
 
+.cart-popup-wrapper {
+  width: 1440px;
+  margin: 0 auto;
+  height: 100%;
+  position: relative;
+}
+
 .cart-popup {
   position: absolute;
   top: 0px;
-  right: 106px;
+  right: 44px;
   z-index: 10;
   background-color: variables.$background-primary-color;
   min-width: 293px;

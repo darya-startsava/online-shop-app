@@ -32,23 +32,25 @@ export default class CartPopup extends React.PureComponent {
     const totalPrice = currentCurrency.symbol + Math.round(result.totalPrice * 100) / 100;
     return (
       showCartPopup && (
-        <Overlay>
-          <div className="cart-popup">
-            <div className="cart-popup-title">
-              <b>My bag,</b> {result.quantity} items
-            </div>
-            <CartList products={products} page="cartPopup" />
-            <div className="cart-popup-total">
-              <span className="cart-popup-total-left">Total</span>
-              <span className="cart-popup-total-right">{totalPrice || 0}</span>
-            </div>
-            <div className="cart-popup-buttons-wrapper">
-              <Button onClick={this.handleClick} page="cartPopup">
-                view bag
-              </Button>
-              <Button onClick={this.handleHideCartPopup} page="cartPopup">
-                check out
-              </Button>
+        <Overlay popup="cart">
+          <div className="cart-popup-wrapper">
+            <div className="cart-popup">
+              <div className="cart-popup-title">
+                <b>My bag,</b> {result.quantity} items
+              </div>
+              <CartList products={products} page="cartPopup" />
+              <div className="cart-popup-total">
+                <span className="cart-popup-total-left">Total</span>
+                <span className="cart-popup-total-right">{totalPrice || 0}</span>
+              </div>
+              <div className="cart-popup-buttons-wrapper">
+                <Button onClick={this.handleClick} page="cartPopup">
+                  view bag
+                </Button>
+                <Button onClick={this.handleHideCartPopup} page="cartPopup">
+                  check out
+                </Button>
+              </div>
             </div>
           </div>
         </Overlay>
