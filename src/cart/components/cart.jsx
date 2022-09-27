@@ -1,6 +1,6 @@
 import { PropTypes } from 'prop-types';
 import React from 'react';
-import { productPropTypes } from '../../utils/propTypes';
+import { productsPropTypes } from '../../utils/propTypes';
 import CartList from './cartList';
 import Button from '../../reusableComponents/button';
 import { calculatePriceAndQuantity } from '../../utils/calculatePriceAndQuantity';
@@ -35,14 +35,6 @@ export default class Cart extends React.PureComponent {
 }
 
 Cart.propTypes = {
-  products: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      product: PropTypes.shape(productPropTypes),
-      count: PropTypes.number,
-      selectedAttributes: PropTypes.object,
-      cartId: PropTypes.string,
-    })
-  ),
+  products: PropTypes.arrayOf(PropTypes.shape(productsPropTypes)),
   currentCurrency: PropTypes.shape({ label: PropTypes.string, symbol: PropTypes.string }),
 };

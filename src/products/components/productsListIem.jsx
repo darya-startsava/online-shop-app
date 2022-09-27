@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { ReactComponent as EmptyCart } from '../../assets/emptyCart.svg';
 import './productsListItem.scss';
+import { productPropTypes } from '../../utils/propTypes';
 
 export default class ProductsListItem extends React.PureComponent {
   constructor(props) {
@@ -50,17 +51,7 @@ export default class ProductsListItem extends React.PureComponent {
 }
 
 ProductsListItem.propTypes = {
-  product: PropTypes.shape({
-    attributes: PropTypes.array,
-    brand: PropTypes.string,
-    category: PropTypes.string,
-    description: PropTypes.string,
-    id: PropTypes.string,
-    inStock: PropTypes.bool,
-    gallery: PropTypes.array,
-    name: PropTypes.string,
-    prices: PropTypes.array,
-  }),
+  product: PropTypes.shape(productPropTypes),
   price: PropTypes.shape({
     amount: PropTypes.number,
     currency: PropTypes.shape({ label: PropTypes.string, symbol: PropTypes.string }),

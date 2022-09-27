@@ -29,3 +29,11 @@ export const productPropTypes = {
     })
   ),
 };
+
+export const productsPropTypes = {
+  id: PropTypes.string,
+  product: PropTypes.shape(productPropTypes),
+  count: PropTypes.number,
+  selectedAttributes: PropTypes.object,
+  cartId: PropTypes.string,
+};

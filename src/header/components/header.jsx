@@ -8,7 +8,7 @@ import { ReactComponent as Logo } from '../../assets/logo.svg';
 import './header.scss';
 import CartPopup from '../../cart/containers/cartPopup';
 import CurrencyPopup from '../../currencyPopup/containers/currencyPopup';
-import { productPropTypes } from '../../utils/propTypes';
+import { productsPropTypes } from '../../utils/propTypes';
 import { calculateQuantity } from '../../utils/calculatePriceAndQuantity';
 
 export default class Header extends React.PureComponent {
@@ -97,15 +97,7 @@ export default class Header extends React.PureComponent {
 }
 
 Header.propTypes = {
-  products: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      product: PropTypes.shape(productPropTypes),
-      count: PropTypes.number,
-      selectedAttributes: PropTypes.object,
-      cartId: PropTypes.string,
-    })
-  ),
+  products: PropTypes.arrayOf(PropTypes.shape(productsPropTypes)),
   currentCurrency: PropTypes.shape({ label: PropTypes.string, symbol: PropTypes.string }),
   currencies: PropTypes.arrayOf(
     PropTypes.shape({ label: PropTypes.string, symbol: PropTypes.string })
