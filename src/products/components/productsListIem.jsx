@@ -4,11 +4,14 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as EmptyCart } from '../../assets/emptyCart.svg';
 import './productsListItem.scss';
 import { productPropTypes } from '../../utils/propTypes';
+import Message from '../../reusableComponents/message/message';
 
 export default class ProductsListItem extends React.PureComponent {
   constructor(props) {
     super(props);
+    this.state = { showMessage: false };
     this.handleClick = this.handleClick.bind(this);
+    this.handleMessageClose = this.handleMessageClose.bind(this);
   }
   handleClick() {
     const { addProductToCart, product } = this.props;
@@ -18,7 +21,13 @@ export default class ProductsListItem extends React.PureComponent {
     });
     const cartId = product.id + JSON.stringify(selectedAttributes);
     addProductToCart(product.id, product, selectedAttributes, cartId);
+    this.setState({ showMessage: true });
   }
+
+  handleMessageClose() {
+    this.setState({ showMessage: false });
+  }
+
   render() {
     const { product, price } = this.props;
     let classNameProductsListItemWrapper = 'products-list-item-wrapper';
@@ -26,6 +35,11 @@ export default class ProductsListItem extends React.PureComponent {
     const productPrice = price?.currency?.symbol + price?.amount;
     return (
       <div className={classNameProductsListItemWrapper}>
+        {this.state.showMessage && (
+          <Message handleMessageClose={this.handleMessageClose}>
+            Product was added to the cart
+          </Message>
+        )}
         <Link
           key={product.id}
           to={product.inStock ? `/product/${product.id}` : '#'}

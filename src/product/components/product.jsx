@@ -6,14 +6,16 @@ import Button from '../../reusableComponents/button';
 import { productPropTypes } from '../../utils/propTypes';
 import Loading from '../../reusableComponents/loading';
 import ProductAttributes from '../../reusableComponents/productAttributes/productAttributes';
+import Message from '../../reusableComponents/message/message';
 
 export default class Product extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = { imageUrl: '', selectedAttributes: {} };
+    this.state = { imageUrl: '', selectedAttributes: {}, showMessage: false };
     this.handleClick = this.handleClick.bind(this);
     this.handleImageClick = this.handleImageClick.bind(this);
     this.handleAttributeClick = this.handleAttributeClick.bind(this);
+    this.handleMessageClose = this.handleMessageClose.bind(this);
   }
   async componentDidMount() {
     const { params, product, currentCurrency, fetchProduct, fetchCurrencies } = this.props;
@@ -24,13 +26,13 @@ export default class Product extends React.PureComponent {
       product.attributes.forEach((i) => {
         selectedAttributes[i.id] = i.items[0].id;
       });
-      this.setState({ imageUrl: product?.gallery[0], selectedAttributes });
+      this.setState({ imageUrl: product?.gallery[0], selectedAttributes, showMessage: false });
     } else {
       const selectedAttributes = {};
       product.attributes.forEach((i) => {
         selectedAttributes[i.id] = i.items[0].id;
       });
-      this.setState({ imageUrl: product?.gallery[0], selectedAttributes });
+      this.setState({ imageUrl: product?.gallery[0], selectedAttributes, showMessage: false });
     }
   }
   handleClick() {
@@ -38,6 +40,11 @@ export default class Product extends React.PureComponent {
     const selectedAttributes = this.state.selectedAttributes;
     const cartId = product.id + JSON.stringify(this.state.selectedAttributes);
     addProductToCart(product.id, product, selectedAttributes, cartId);
+    this.setState({ showMessage: true });
+  }
+
+  handleMessageClose() {
+    this.setState({ showMessage: false });
   }
 
   handleImageClick(url) {
@@ -61,6 +68,11 @@ export default class Product extends React.PureComponent {
       const productPrice = price?.currency?.symbol + price?.amount;
       return (
         <div className="product-wrapper">
+          {this.state.showMessage && (
+            <Message handleMessageClose={this.handleMessageClose}>
+              Product was added to the cart
+            </Message>
+          )}
           <div className="product-image-preview-list">
             {product.gallery.map((i) => (
               <img
@@ -105,6 +117,7 @@ Product.propTypes = {
   status: PropTypes.string,
   params: PropTypes.shape({ product: PropTypes.string }),
   currentCurrency: PropTypes.shape({ label: PropTypes.string, symbol: PropTypes.string }),
+  showMessage: PropTypes.bool,
   fetchProduct: PropTypes.func,
   fetchCurrencies: PropTypes.func,
   addProductToCart: PropTypes.func,

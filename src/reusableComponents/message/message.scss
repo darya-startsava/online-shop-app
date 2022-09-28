@@ -1,0 +1,26 @@
+@use '../../styles/mixins';
+@use '../../styles/variables';
+
+.message-wrapper {
+  width: 1440px;
+  margin: 0 auto;
+  height: 100%;
+  position: relative;
+}
+
+.message {
+  width: 300px;
+  height: 100px;
+  position: absolute;
+  padding: 50px 50px;
+  top: 350px;
+  right: 704px;
+  background-color: variables.$background-primary-color;
+}
+
+.message-text {
+  @include mixins.fontRaleway;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
