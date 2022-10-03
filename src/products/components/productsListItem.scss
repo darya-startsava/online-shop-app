@@ -1,10 +1,6 @@
 @use '../../styles/mixins';
 @use '../../styles/variables';
 
-.products-list-item-wrapper {
-  padding: 16px 20px 0 16px;
-}
-
 .products-list-item-wrapper:hover {
   box-shadow: 0px 0px 20px rgba(168, 172, 176, 0.19);
   .products-list-item-add-button {
@@ -20,6 +16,9 @@
   width: 354px;
   height: 330px;
   object-fit: cover;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 16px;
 }
 
 .products-list-item-out-of-stock-title {
@@ -33,6 +32,7 @@
 
 .products-list-item-title-wrapper {
   width: 354px;
+  padding-left: 16px;
 }
 .products-list-item-name {
   @include mixins.fontRaleway($weight: 300);
@@ -47,7 +47,7 @@
   visibility: hidden;
   position: relative;
   bottom: 84px;
-  left: 289px;
+  left: 303px;
   border-radius: 50%;
   padding: 13px 13px 10px 13px;
   border: none;

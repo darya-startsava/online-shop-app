@@ -10,7 +10,9 @@ class Category extends React.PureComponent {
     return (
       <>
         <div className="category-page-title">{category}</div>
-        <ProductsList category={category} />
+        <div className="category-products-wrapper">
+          <ProductsList category={category} />
+        </div>
       </>
     );
   }
