@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Status from '../../utils/status';
 import './product.scss';
-import Button from '../../reusableComponents/button';
+import Button from '../../reusableComponents/button/button';
 import { productPropTypes } from '../../utils/propTypes';
-import Loading from '../../reusableComponents/loading';
+import Loading from '../../reusableComponents/loading/loading';
 import ProductAttributes from '../../reusableComponents/productAttributes/productAttributes';
 import Message from '../../reusableComponents/message/message';
 

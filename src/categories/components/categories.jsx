@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Status from '../../utils/status';
 import { NavLink } from 'react-router-dom';
 import './categories.scss';
-import Loading from '../../reusableComponents/loading';
+import Loading from '../../reusableComponents/loading/loading';
 
 export default class Categories extends React.PureComponent {
   async componentDidMount() {

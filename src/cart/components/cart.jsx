@@ -2,7 +2,7 @@ import { PropTypes } from 'prop-types';
 import React from 'react';
 import { productsPropTypes } from '../../utils/propTypes';
 import CartList from './cartList';
-import Button from '../../reusableComponents/button';
+import Button from '../../reusableComponents/button/button';
 import { calculatePriceAndQuantity } from '../../utils/calculatePriceAndQuantity';
 import './cart.scss';
 

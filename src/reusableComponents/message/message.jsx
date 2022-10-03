@@ -1,8 +1,8 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import Button from '../button';
+import Button from '../button/button';
 import './message.scss';
-import Overlay from '../overlay';
+import Overlay from '../overlay/overlay';
 
 export default class Message extends React.PureComponent {
   constructor(props) {

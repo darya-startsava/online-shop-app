@@ -1,6 +1,6 @@
 import { PropTypes } from 'prop-types';
 import React from 'react';
-import Overlay from '../../reusableComponents/overlay';
+import Overlay from '../../reusableComponents/overlay/overlay';
 import './currencyPopup.scss';
 
 export default class CurrencyPopup extends React.PureComponent {

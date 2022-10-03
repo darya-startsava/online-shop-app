@@ -1,5 +1,5 @@
-@use './../styles/mixins';
-@use './../styles/variables';
+@use './../../styles/mixins';
+@use './../../styles/variables';
 .button-reusable {
   text-transform: uppercase;
   background-color: variables.$background-button-color;

@@ -1,9 +1,9 @@
 import { PropTypes } from 'prop-types';
 import React from 'react';
 import { productsPropTypes } from '../../utils/propTypes';
-import Button from '../../reusableComponents/button';
+import Button from '../../reusableComponents/button/button';
 import CartList from './cartList';
-import Overlay from '../../reusableComponents/overlay';
+import Overlay from '../../reusableComponents/overlay/overlay';
 import './cartPopup.scss';
 import { calculatePriceAndQuantity } from '../../utils/calculatePriceAndQuantity';
 

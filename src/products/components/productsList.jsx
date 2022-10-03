@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Status from '../../utils/status';
 import ProductsListItem from '../containers/productsListItem';
 import './productsList.scss';
-import Loading from '../../reusableComponents/loading';
+import Loading from '../../reusableComponents/loading/loading';
 import { FixedSizeGrid as Grid } from 'react-window';
 import outerElementType from '../../utils/withScroll';
 import constants from '../../constants';
