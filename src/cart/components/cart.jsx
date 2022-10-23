@@ -23,9 +23,12 @@ export default class Cart extends React.PureComponent {
             <div className="cart-total">Total:</div>
           </div>
           <div className="cart-total-information-wrapper-right">
-            <div>{currentCurrency.symbol + Math.round(result.totalPrice * 21) / 100 || '0'}</div>
+            <div>
+              {currentCurrency.symbol + (Math.round(result.totalPrice * 21) / 100).toFixed(2) ||
+                '0.00'}
+            </div>
             <div> {result.quantity || '0'}</div>
-            <div>{currentCurrency.symbol + Math.round(result.totalPrice * 100) / 100 || '0'}</div>
+            <div>{currentCurrency.symbol + result.totalPrice || '0.00'}</div>
           </div>
           <Button page="cart">order</Button>
         </div>

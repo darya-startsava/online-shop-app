@@ -7,6 +7,7 @@ import { productPropTypes } from '../../utils/propTypes';
 import Loading from '../../reusableComponents/loading/loading';
 import ProductAttributes from '../../reusableComponents/productAttributes/productAttributes';
 import Message from '../../reusableComponents/message/message';
+import parse from 'html-react-parser';
 
 export default class Product extends React.PureComponent {
   constructor(props) {
@@ -65,7 +66,8 @@ export default class Product extends React.PureComponent {
 
     if (status === Status.SUCCESS) {
       const price = product.prices.filter((i) => i.currency.label === currentCurrency?.label)[0];
-      const productPrice = price?.currency?.symbol + price?.amount;
+      const productPrice =
+        price?.currency?.symbol + (Math.round(price?.amount * 100) / 100).toFixed(2);
       return (
         <div className="product-wrapper">
           {this.state.showMessage && (
@@ -75,18 +77,22 @@ export default class Product extends React.PureComponent {
           )}
           <div className="product-image-preview-list">
             {product.gallery.map((i) => (
-              <img
-                className="product-image-preview"
-                key={i}
-                src={i}
-                alt=""
-                onClick={() => {
-                  this.handleImageClick(i);
-                }}
-              />
+              <div className="product-image-preview-wrapper" key={i}>
+                <img
+                  className="product-image-preview"
+                  key={i}
+                  src={i}
+                  alt=""
+                  onClick={() => {
+                    this.handleImageClick(i);
+                  }}
+                />
+              </div>
             ))}
           </div>
-          <img className="product-image" src={this.state.imageUrl} alt="" />
+          <div className="product-image-wrapper">
+            <img className="product-image" src={this.state.imageUrl} alt="" />
+          </div>
           <div className="product-information-wrapper">
             <div className="product-brand">{product.brand}</div>
             <div className="product-name">{product.name}</div>
@@ -99,13 +105,10 @@ export default class Product extends React.PureComponent {
             />
             <div className="product-attribute-title">Price:</div>
             <div className="product-price">{productPrice || ' '}</div>
-            <Button onClick={this.handleClick} page="product">
+            <Button onClick={this.handleClick} page="product" isDisabled={!product.inStock}>
               add to cart
             </Button>
-            <div
-              className="product-description"
-              dangerouslySetInnerHTML={{ __html: product.description }}
-            />
+            <div className="product-description">{parse(product.description)}</div>
           </div>
         </div>
       );

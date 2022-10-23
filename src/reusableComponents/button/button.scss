@@ -29,3 +29,14 @@
   padding: 14px;
   width: 100%;
 }
+
+.button-disabled {
+  background-color: variables.$disabled-button-color;
+  cursor: auto;
+}
+
+.button-disabled:hover {
+  background-color: variables.$disabled-button-color;
+  border: solid variables.$background-primary-color;
+  color: variables.$font-light-color;
+}

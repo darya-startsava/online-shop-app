@@ -1,6 +1,7 @@
 import React, { forwardRef, useRef } from 'react';
 import { useScroll } from '@use-gesture/react';
 import PropTypes from 'prop-types';
+import './withScroll.scss';
 
 const outerElementType = forwardRef(({ onScroll, children }, ref) => {
   const containerRef = useRef(null);
@@ -30,7 +31,7 @@ const outerElementType = forwardRef(({ onScroll, children }, ref) => {
   );
   ref.current = document.documentElement;
   return (
-    <div style={{ position: 'relative' }} ref={containerRef}>
+    <div className="withScroll" ref={containerRef}>
       {children}
     </div>
   );

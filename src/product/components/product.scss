@@ -39,18 +39,33 @@
   max-height: 511px;
   overflow-y: auto;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+.product-image-preview-wrapper {
+  display: flex;
+  width: 79px;
 }
 
 .product-image-preview {
-  height: 80px;
-  width: 79px;
-  object-fit: cover;
+  max-height: 80px;
+  height: auto;
+  width: 100%;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.product-image-wrapper {
+  display: flex;
+  width: 610px;
 }
 
 .product-image {
-  width: 610px;
+  width: auto;
   height: 511px;
-  object-fit: cover;
+  margin: 0 auto;
+  max-width: 610px;
+  object-fit: contain;
 }
 
 .product-information-wrapper {

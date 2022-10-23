@@ -40,7 +40,8 @@ export default class ProductsListItem extends React.PureComponent {
     )[0];
     let classNameProductsListItemWrapper = 'products-list-item-wrapper';
     if (!product?.inStock) classNameProductsListItemWrapper += ' products-list-item-out-of-stock';
-    const productPrice = price?.currency?.symbol + price?.amount;
+    const productPrice =
+      price?.currency?.symbol + (Math.round(price?.amount * 100) / 100).toFixed(2);
     return (
       <div
         className={classNameProductsListItemWrapper}
@@ -59,10 +60,12 @@ export default class ProductsListItem extends React.PureComponent {
         )}
         <Link
           key={product?.id}
-          to={product?.inStock ? `/product/${product.id}` : '#'}
+          to={`/product/${product.id}`}
           aria-label="open full product information"
         >
-          <img className="products-list-item-image" src={product?.gallery[0]} alt="" />
+          <div className="products-list-item-image-wrapper">
+            <img className="products-list-item-image" src={product?.gallery[0]} alt="" />
+          </div>
           <div className="products-list-item-out-of-stock-title">out of stock</div>
           <div className="products-list-item-title-wrapper">
             <div className="products-list-item-name">{product?.brand + ' ' + product?.name}</div>

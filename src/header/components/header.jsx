@@ -70,7 +70,7 @@ export default class Header extends React.PureComponent {
             {this.state.showCurrencyPopup ? <HideDropdown /> : <ShowDropdown />}
           </button>
           <button
-            className="header-button header-open-cart-button"
+            className="header-button header-open-cart-button" id="open-cart-button"
             onClick={this.handleOpenCartPopup}
             aria-label="open cart"
           >

@@ -4,9 +4,14 @@ import './button.scss';
 
 export default class Button extends React.PureComponent {
   render() {
-    const { children, onClick, page } = this.props;
+    const { isDisabled, children, onClick, page } = this.props;
+    const isDisabledClassName = isDisabled ? 'button-disabled' : '';
     return (
-      <button className={`button-reusable button-reusable-page-${page}`} onClick={onClick}>
+      <button
+        className={`button-reusable button-reusable-page-${page} ${isDisabledClassName}`}
+        onClick={onClick}
+        disabled={isDisabled}
+      >
         {children}
       </button>
     );
@@ -15,6 +20,7 @@ export default class Button extends React.PureComponent {
 
 Button.propTypes = {
   page: PropTypes.string,
+  isDisabled: PropTypes.bool,
   children: PropTypes.node,
   onClick: PropTypes.func,
 };

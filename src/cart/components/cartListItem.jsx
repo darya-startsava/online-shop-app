@@ -49,7 +49,7 @@ export default class CartListItem extends React.PureComponent {
             <div className={`cart-list-item-brand-page-${page}`}>{product.brand}</div>
             <div className={`cart-list-item-name-page-${page}`}>{product.name}</div>
             <div className={`cart-list-item-price-page-${page}`}>
-              {price.currency.symbol + price.amount}
+              {price.currency.symbol + (Math.round(price.amount * 100) / 100).toFixed(2)}
             </div>
             <ProductAttributes
               product={product}
@@ -60,7 +60,9 @@ export default class CartListItem extends React.PureComponent {
           </div>
           <div className={`cart-list-item-right-wrapper cart-list-item-right-wrapper-page-${page}`}>
             <ChangeCount cartId={cartId} count={count} page={page} />
-            <div className="cart-list-item-product-image-wrapper">
+            <div
+              className={`cart-list-item-product-image-wrapper cart-list-item-product-image-page-${page}-wrapper`}
+            >
               <img
                 className={`cart-list-item-product-image-page-${page}`}
                 src={this.state.imageUrl}

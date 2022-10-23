@@ -12,13 +12,21 @@
   }
 }
 
-.products-list-item-image {
+.products-list-item-image-wrapper {
+  display: flex;
   width: 354px;
-  height: 330px;
-  object-fit: cover;
   margin-left: 16px;
   margin-right: 16px;
   margin-top: 16px;
+}
+
+.products-list-item-image {
+  max-width: 354px;
+  width: auto;
+  height: 330px;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: cover;
 }
 
 .products-list-item-out-of-stock-title {

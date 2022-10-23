@@ -16,6 +16,7 @@ export function calculatePriceAndQuantity(products, currentCurrency) {
       ?.map((i) => i.priceAmount * i.count)
       ?.reduce((a, b) => a + b);
   }
+  totalPrice = (Math.round(totalPrice * 100) / 100).toFixed(2);
   return { quantity, totalPrice };
 }
 

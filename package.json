@@ -5,6 +5,7 @@
   "dependencies": {
     "@tilework/opus": "^0.0.10",
     "@use-gesture/react": "^10.2.20",
+    "html-react-parser": "^3.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.2",

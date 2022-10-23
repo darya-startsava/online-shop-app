@@ -10,8 +10,29 @@ import { calculatePriceAndQuantity } from '../../utils/calculatePriceAndQuantity
 export default class CartPopup extends React.PureComponent {
   constructor(props) {
     super(props);
+    this.toggleContainer = React.createRef();
     this.handleClick = this.handleClick.bind(this);
     this.handleHideCartPopup = this.handleHideCartPopup.bind(this);
+    this.handleClickOutside = this.handleClickOutside.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('click', this.handleClickOutside, true);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('click', this.handleClickOutside, true);
+  }
+
+  handleClickOutside(event) {
+    const openCartButton = document.getElementById('open-cart-button');
+    const { hidePopup, showCartPopup } = this.props;
+    if (
+      showCartPopup &&
+      !this.toggleContainer.current.contains(event.target) &&
+      !openCartButton.current.contains(event.target)
+    )
+      hidePopup();
   }
 
   handleClick() {
@@ -29,19 +50,19 @@ export default class CartPopup extends React.PureComponent {
     const { currentCurrency } = this.props;
     const { products, showCartPopup } = this.props;
     const result = calculatePriceAndQuantity(products, currentCurrency);
-    const totalPrice = currentCurrency.symbol + Math.round(result.totalPrice * 100) / 100;
+    const totalPrice = currentCurrency.symbol + result.totalPrice;
     return (
       showCartPopup && (
         <Overlay popup="cart">
           <div className="cart-popup-wrapper">
-            <div className="cart-popup">
+            <div className="cart-popup" ref={this.toggleContainer}>
               <div className="cart-popup-title">
-                <b>My bag,</b> {result.quantity} items
+                <b>My bag,</b> {result.quantity + ' ' + (result.quantity === 1 ? 'item' : 'items')}
               </div>
               <CartList products={products} page="cartPopup" />
               <div className="cart-popup-total">
                 <span className="cart-popup-total-left">Total</span>
-                <span className="cart-popup-total-right">{totalPrice || 0}</span>
+                <span className="cart-popup-total-right">{totalPrice || '0.00'}</span>
               </div>
               <div className="cart-popup-buttons-wrapper">
                 <Button onClick={this.handleClick} page="cartPopup">
