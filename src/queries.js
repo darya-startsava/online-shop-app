@@ -1,6 +1,6 @@
 import { client, Query, Field } from '@tilework/opus';
 
-client.setEndpoint('http://localhost:4000/graphql');
+client.setEndpoint('https://online-shop-app.onrender.com/graphql');
 
 export async function queryCategories() {
   const query = new Query('categories', true).addField('name', true);
