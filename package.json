@@ -1,6 +1,7 @@
 {
   "name": "online-shop-app",
   "version": "0.1.0",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@tilework/opus": "^0.0.10",
