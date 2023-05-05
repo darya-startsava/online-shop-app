@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "./static/css/main.180db884.css",
+    "main.js": "./static/js/main.1936b54c.js",
+    "static/media/logo.svg": "./static/media/logo.00497fa5cb56457314a45d15ca2e13cf.svg",
+    "static/media/cart.svg": "./static/media/cart.d6007204f610b6a35f841ec5419f757d.svg",
+    "static/media/emptyCart.svg": "./static/media/emptyCart.f4ff40ac8da947540a4382947cc8a181.svg",
+    "index.html": "./index.html",
+    "static/media/plus.svg": "./static/media/plus.d8f0dcff0e35a02bff6d32f33fc035a8.svg",
+    "static/media/minus.svg": "./static/media/minus.d785cd27a408419cb86ce74220e8aa8b.svg",
+    "static/media/arrowLeft.svg": "./static/media/arrowLeft.051a3204e5568b5edb552823cfd666ac.svg",
+    "static/media/arrowRight.svg": "./static/media/arrowRight.2dab7ae914b35e4431df808db93dc106.svg",
+    "static/media/arrowDown.svg": "./static/media/arrowDown.90b7f0836b7a96a43d28bb4629d28801.svg",
+    "static/media/arrowUp.svg": "./static/media/arrowUp.a4f25be73a448c93421799decb74f9ee.svg",
+    "main.180db884.css.map": "./static/css/main.180db884.css.map",
+    "main.1936b54c.js.map": "./static/js/main.1936b54c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.180db884.css",
+    "static/js/main.1936b54c.js"
+  ]
+}
